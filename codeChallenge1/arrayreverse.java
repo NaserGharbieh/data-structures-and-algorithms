@@ -10,7 +10,7 @@ public class arrayreverse {
     }
 
     public static void main(String[] args) {
-        int[] originalArray = {1, 2, 3, 4, 5};
+        int[] originalArray = {99,-12, 823,10,23,35,54,89};
         int[] reversedArray = reverseArray(originalArray);
         
         System.out.print("Original array: ");

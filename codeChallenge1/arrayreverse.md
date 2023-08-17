@@ -1,7 +1,7 @@
 # Code Challenge: Class 01
 #### Write a function called reverseArray which takes an array as an argument and returns an array with elements in reversed order. 
 ## Whiteboard Process
-![ArrayReverse Algorithm](arrayreverse.png)
+![ArrayReverse Algorithm](arrayreverse2.png)
 
 ## Approach & Efficiency
 I used a basic approach to reverse the array by creating a new array and copying elements from the original array in reverse order.
