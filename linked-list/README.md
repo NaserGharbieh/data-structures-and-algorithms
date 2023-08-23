@@ -1,5 +1,3 @@
-Sure, here is the description of the Java class you provided:
-
 # Linked List Implementation in Java
 
 This Java class defines a basic linked list data structure with various methods for manipulating the list. The class is encapsulated within the `linked.list` package.
