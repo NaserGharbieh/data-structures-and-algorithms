@@ -11,6 +11,7 @@ public class LinkedList {
     }
 
     private Node head = null;
+    private Node tail = null;
 
 
     private boolean isEmpty() {
@@ -20,7 +21,7 @@ public class LinkedList {
     void insert(int val) {
         if (isEmpty()) {
             head = new Node(val);
-//            tail = head;
+           tail = head;
 
         } else {
             Node newNode = new Node(val);
@@ -40,6 +41,48 @@ public class LinkedList {
         }
 
         return false;
+    }
+    public void append(int val){
+        if (isEmpty()){
+            insert(val);
+        }else {
+        Node newNode=new Node(val);
+        tail.next=newNode;
+        newNode.next=null;
+        tail=newNode; }
+    }
+    public void insertBefore(int val,int newVal){
+        if(!Includes(val)){
+            return ;
+        }
+        if(head.val==val){
+            insert(newVal);
+            return ;
+        }
+        Node temp=head;
+        while(temp.next.val !=val){
+            temp=temp.next;
+        }
+        Node newNode = new Node(newVal);
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+
+    public void insertAfter(int val , int newVal){
+        if(!Includes(val)){
+            return ;
+        }
+        if(tail.val==val){
+            append(newVal);
+            return ;
+        }
+        Node temp=head;
+        while(temp.val !=val){
+            temp=temp.next;
+        }
+        Node newNode = new Node(newVal);
+        newNode.next=temp.next;
+        temp.next=newNode;
     }
 
     @Override
