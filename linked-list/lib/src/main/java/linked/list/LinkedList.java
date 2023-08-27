@@ -84,6 +84,37 @@ public class LinkedList {
         newNode.next=temp.next;
         temp.next=newNode;
     }
+    public int kthFromEnd(int k) {
+        if (isEmpty() || k < 0) {
+            throw new IllegalArgumentException("Invalid input or linked list is empty");
+        }
+
+        Node firstPointer = head;
+        Node secondPointer = head;
+
+        // Move the first pointer k steps ahead
+        for (int i = 0; i < k; i++) {
+            if (firstPointer == null) {
+                throw new IllegalArgumentException("k is greater than the length of the linked list");
+            }
+            firstPointer = firstPointer.next;
+        }
+
+        // Handle the case where k is equal to the length of the list
+        if (firstPointer == null) {
+            throw new IllegalArgumentException("k is equal to the length of the linked list");
+        }
+
+        // Move both pointers until the first pointer reaches the end
+        while (firstPointer.next != null) {
+            firstPointer = firstPointer.next;
+            secondPointer = secondPointer.next;
+        }
+
+        return secondPointer.val;
+    }
+
+
 
     @Override
     public String toString() {
