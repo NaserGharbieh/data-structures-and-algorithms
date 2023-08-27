@@ -6,7 +6,7 @@ public class LinkedList {
         Node next;
 
         Node(int val) {
-            this.val = val;
+            this.val= val;
         }
     }
 
@@ -20,7 +20,7 @@ public class LinkedList {
     void insert(int val) {
         if (isEmpty()) {
             head = new Node(val);
-//            tail = head;
+//            tailist= head;
 
         } else {
             Node newNode = new Node(val);
@@ -63,4 +63,24 @@ public class LinkedList {
 
         return print;
     }
-}
+
+    public static void main(String[] args) {
+        LinkedList l=new LinkedList();   //empty
+        System.out.println( l.toString()+"\n\n");
+        System.out.println(l.Includes(5)+"\n\n");
+
+
+        l.insert(1);    //single element 
+        System.out.println( l.toString()+"\n\n");
+        System.out.println(l.Includes(2)+"\n\n");
+        System.out.println(l.Includes(1));
+
+        l.insert(4);
+        l.insert(3);
+        l.insert(2); // 4 elements 
+        System.out.println( l.toString()+"\n\n");
+        System.out.println(l.Includes(4)+"\n\n");
+        System.out.println(l.Includes(5));
+    }
+    }
+
