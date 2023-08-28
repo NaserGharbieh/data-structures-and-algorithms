@@ -1,25 +1,24 @@
-## Code Challenge: Class 05: linked-list 
-### Implement a Singly Linked List and adding 3 methods
-- add node at the first index of the list
-- find if the node exists in the list
-- print all list nodes in a string
+## Code Challenge08: Zip the two linked lists
+### Zip the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the the zipped list.
 ## Whiteboard Process
-![Linked-List05](pics/linkedlist-whiteBoard.png)
+
 
 ## Approach & Efficiency
-## approach for insertion
-- Create a Node: Initialize a new node with the desired data value.
-
-- Adjust New Node's Next Pointer: Set the next pointer of the new node to point to the current head of the linked list. This step ensures that the new node is linked to the existing list.
-
-- Update Head Pointer: Update the head pointer of the linked list to reference the new node. This effectively designates the new node as the new head of the list.
-
-- Finalization: The new node is now successfully inserted at the head of the linked list, and the head pointer points to it. The other elements in the linked list can be accessed by following the next pointers.
+- The zipLists method involves iterating through both input linked lists (list1 and list2) alternately and creating a new linked list (result) by appending nodes from each list. 
+- In summary:
+- Time Complexity: O(n + m)
+- Space Complexity: O(n)
+- Let's analyze and underatand why its time complexity and space complexity:
 ### Time Complexity:
-The time complexity of this approach is O(1), This is because we **Do NOT have to traverse the whole list** .
+- The method iterates through both `list1` and `list2` sequentially, considering each node exactly once.
+- Since each iteration involves constant time operations (appending to the result list), the time complexity is proportional to the combined length of `list1` and `list2`.
+- Therefore, the time complexity can be expressed as O(n + m), where n is the length of `list1` and m is the length of `list2`.
 
-### Space Complexity:
-The space complexity is also O(1) since **no extra space is required for this operation** .
+### Space Complexity: 
+- The method creates a new linked list `result` to store the zipped elements.
+- The additional space used is proportional to the total number of nodes in the `result` list.
+- In the worst case, if both `list1` and `list2` have n nodes each, the `result` list will have 2n nodes.
+- Thus, the space complexity is O(n), where n is the total number of nodes in the zipped list.
 
 ## Solution
 ``` java 
@@ -36,6 +35,7 @@ public class LinkedList {
     }
 
     private Node head = null;
+    private Node tail = null;
 
 
     private boolean isEmpty() {
@@ -45,7 +45,7 @@ public class LinkedList {
     void insert(int val) {
         if (isEmpty()) {
             head = new Node(val);
-//            tail = head;
+            tail = head;
 
         } else {
             Node newNode = new Node(val);
@@ -55,18 +55,35 @@ public class LinkedList {
         }
 
     }
-    boolean Includes(int val) {
-        Node temp=head;
-        while (temp != null) {
+     public void append(int val){
+        if (isEmpty()){
+            insert(val);
+        }else {
+            Node newNode=new Node(val);
+            tail.next=newNode;
+            newNode.next=null;
+            tail=newNode; }
+    } 
+     public LinkedList zipLists(LinkedList list1, LinkedList list2) {
+        LinkedList result = new LinkedList();
 
-            if(temp.val==val)return true;
+        Node current1 = list1.head;
+        Node current2 = list2.head;
 
-            temp = temp.next;
+        while (current1 != null || current2 != null) {
+            if (current1 != null) {
+                result.append(current1.val);
+                current1 = current1.next;
+            }
+
+            if (current2 != null) {
+                result.append(current2.val);
+                current2 = current2.next;
+            }
         }
 
-        return false;
+        return result;
     }
-
     @Override
     public String toString() {
         String print = "";
@@ -93,33 +110,23 @@ public class LinkedList {
 ``` 
 # Tests 
 ``` java
-ublic class LinkedListTest {
+public class LinkedListTest {
 
-    @Test
-    void testInsertAndToString() {
-        LinkedList linkedList = new LinkedList();
-        linkedList.insert(30);
-        linkedList.insert(99);
-        linkedList.insert(10);
+     @Test
+    void testZipLists() {
+        LinkedList list1 = new LinkedList();
+        list1.insert(1);
+        list1.insert(3);
+        list1.insert(5);
 
-        assertEquals("10 -> 99 -> 30 -> NULL", linkedList.toString());
+        LinkedList list2 = new LinkedList();
+        list2.insert(2);
+        list2.insert(4);
+        list2.insert(6);
+
+        LinkedList result = new LinkedList();
+        result = result.zipLists(list1, list2);
+
+        assertEquals("5 -> 6 -> 3 -> 4 -> 1 -> 2 -> NULL", result.toString());
     }
-    @Test
-    void testInsertAndToStringIfLinkedListIsEmpity () {
-        LinkedList linkedList = new LinkedList();
-        assertEquals("linked list is empty!!", linkedList.toString());
-
-    }
-
-    @Test
-    void testIncludes() {
-        LinkedList linkedList = new LinkedList();
-        linkedList.insert(2000);
-        linkedList.insert(152);
-        linkedList.insert(10);
-
-        assertTrue(linkedList.Includes(10));
-        assertFalse(linkedList.Includes(1611));
-    }
-}
 ```
