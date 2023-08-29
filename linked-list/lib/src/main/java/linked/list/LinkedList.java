@@ -11,6 +11,7 @@ public class LinkedList {
     }
 
     private Node head = null;
+    private Node tail = null;
 
 
     private boolean isEmpty() {
@@ -20,7 +21,9 @@ public class LinkedList {
     void insert(int val) {
         if (isEmpty()) {
             head = new Node(val);
-//            tailist= head;
+
+           tail = head;
+
 
         } else {
             Node newNode = new Node(val);
@@ -41,6 +44,79 @@ public class LinkedList {
 
         return false;
     }
+    public void append(int val){
+        if (isEmpty()){
+            insert(val);
+        }else {
+        Node newNode=new Node(val);
+        tail.next=newNode;
+        newNode.next=null;
+        tail=newNode; }
+    }
+    public void insertBefore(int val,int newVal){
+        if(!Includes(val)){
+            return ;
+        }
+        if(head.val==val){
+            insert(newVal);
+            return ;
+        }
+        Node temp=head;
+        while(temp.next.val !=val){
+            temp=temp.next;
+        }
+        Node newNode = new Node(newVal);
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+
+    public void insertAfter(int val , int newVal){
+        if(!Includes(val)){
+            return ;
+        }
+        if(tail.val==val){
+            append(newVal);
+            return ;
+        }
+        Node temp=head;
+        while(temp.val !=val){
+            temp=temp.next;
+        }
+        Node newNode = new Node(newVal);
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+    public int kthFromEnd(int k) {
+        if (isEmpty() || k < 0) {
+            throw new IllegalArgumentException("Invalid input or linked list is empty");
+        }
+
+        Node firstPointer = head;
+        Node secondPointer = head;
+
+        // Move the first pointer k steps ahead
+        for (int i = 0; i < k; i++) {
+            if (firstPointer == null) {
+                throw new IllegalArgumentException("k is greater than the length of the linked list");
+            }
+            firstPointer = firstPointer.next;
+        }
+
+        // Handle the case where k is equal to the length of the list
+        if (firstPointer == null) {
+            throw new IllegalArgumentException("k is equal to the length of the linked list");
+        }
+
+        // Move both pointers until the first pointer reaches the end
+        while (firstPointer.next != null) {
+            firstPointer = firstPointer.next;
+            secondPointer = secondPointer.next;
+        }
+
+        return secondPointer.val;
+    }
+
+
 
     @Override
     public String toString() {

@@ -1,3 +1,4 @@
+
 ## Code Challenge: Class 05: linked-list 
 ### Implement a Singly Linked List and adding 3 methods
 - add node at the first index of the list
