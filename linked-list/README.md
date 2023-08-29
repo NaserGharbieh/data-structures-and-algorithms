@@ -130,3 +130,4 @@ public class LinkedListTest {
         assertEquals("5 -> 6 -> 3 -> 4 -> 1 -> 2 -> NULL", result.toString());
     }
 ```
+

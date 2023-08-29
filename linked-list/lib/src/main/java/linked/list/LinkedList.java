@@ -21,7 +21,11 @@ public class LinkedList {
     void insert(int val) {
         if (isEmpty()) {
             head = new Node(val);
+
             tail = head;
+
+        
+
 
         } else {
             Node newNode = new Node(val);
@@ -46,10 +50,12 @@ public class LinkedList {
         if (isEmpty()){
             insert(val);
         }else {
+
             Node newNode=new Node(val);
             tail.next=newNode;
             newNode.next=null;
             tail=newNode; }
+
     }
     public void insertBefore(int val,int newVal){
         if(!Includes(val)){
