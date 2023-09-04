@@ -113,6 +113,26 @@ public class LinkedList {
 
         return secondPointer.val;
     }
+    public LinkedList zipLists(LinkedList list1, LinkedList list2) {
+        LinkedList result = new LinkedList();
+
+        Node current1 = list1.head;
+        Node current2 = list2.head;
+
+        while (current1 != null || current2 != null) {
+            if (current1 != null) {
+                result.append(current1.val);
+                current1 = current1.next;
+            }
+
+            if (current2 != null) {
+                result.append(current2.val);
+                current2 = current2.next;
+            }
+        }
+
+        return result;
+    }
 
 
 
