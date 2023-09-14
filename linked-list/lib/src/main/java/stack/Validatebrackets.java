@@ -1,7 +1,10 @@
 package stack;
 
 public class Validatebrackets {
-    private Stack <Character>brackets = new Stack<>();
+    public Stack <Character>brackets = new Stack<>();
+
+    public Validatebrackets() {
+    }
 
     public boolean validateBrackets(String sentece) {
 
