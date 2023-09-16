@@ -1,50 +1,52 @@
 ## Code Challenge 11: PseudoQueue
 ## Create a new class called pseudo queue which implemnts a Queue Using 2 Stacks.
 ## Whiteboard Process
-![CC10-stack](whiteboards/CC10-Queue-Implmentation.png)
+![CC10-stack](whiteboards/CC11-Pseudo-Queue.png)
 
 ## Approach & Efficiency
 ## there are 2 main methods
-## Approach & Efficiency
-## there are 2 main methods
-### 1. enqueue(T value) : method inserts a new element (node) at the back (or rear) of the queue.
+### 1. enqueue(T value) : method inserts a new element (node) at the back (or rear) of the queue but now in a different way .
 - **Algorithm :**
-1. Create a new node `newNode` with the given `value`.
-2. If the queue is empty (both front and rear references are null), set
-   both the front and rear references to the new node.
-3. If the queue is not empty, set the next reference of the current back
-   node to the new node, and then update the back reference to point to
-   the new node.
 
-- **Time Complexity:** O(1)
-    - The `enqueue` method inserts a new element (node) at the back (or rear) of the queue.
-    - Regardless of the number of elements currently in the queue, the `enqueue` operation takes a constant amount of time because it involves creating a new node, setting its `next` reference to the current back node, and updating the `back` reference to the new node.
-    - The time complexity is not dependent on the size of the queue.
+1. Check if stack `s2` is not empty.
+
+2. If `s2` is not empty,
+   transfer all elements from `s2` to `s1`
+   to maintain the correct order.
+
+3. Push the given value onto stack `s1`.
+
+
+- **Time Complexity:** O(n)
+    - In the worst case, when we need to transfer elements from `s2` to `s1`, the time complexity is O(N), where N is the number of elements in `s2`. 
+    - This is because we are popping all elements from `s2` and pushing them onto `s1`, which takes linear time in the number of elements in `s2`.
+    - If `s2` is empty (which is the best-case scenario), the time complexity is O(1) because we only need to push the given value onto `s1`.
 
 
 - **Space Complexity:** O(1)
-    - The `enqueue` method uses a constant amount of additional memory regardless of the size of the queue.
-    - It creates a single new node for the element being enqueued, and the memory usage does not depend on the number of elements already in the queue.
-    - The space complexity is constant.
+    - The `enqueue` method uses a constant amount of additional memory regardless of whether `s2` is empty or not. 
+    - This is because we are not using any additional data structures or memory that grows with the input size. 
+    - We are simply performing operations on the existing stacks `s1` and `s2`.
 
-### 2. dequeue() : removes and returns the element from the front of the queue.
+### 2. dequeue() : removes and returns the element from the front of the queue but now in a different way.
 - **Algorithm :**
-1. Check if the queue is empty by inspecting the `front` reference. If it's `null`, the
-   queue is empty, and you cannot dequeue.
-2. If the queue is not empty, retrieve the value stored in the front node.
-3. Update the `front` reference to point to the next node in the queue.
-4. Check if the queue has become empty after dequeuing. If `front` is `null`, update the `back` reference to `null` as well (since there are no elements left).
+1. If `s2` is not empty, pop the top element from `s2` and return it as the result.
 
-- **Time Complexity:** O(1)
-    - The `dequeue` method removes and returns the element from the front of the queue.
-    - Regardless of the number of elements currently in the queue, the `dequeue` operation takes a constant amount of time because it involves updating the `front` reference to point to the next node.
-    - The time complexity is not dependent on the size of the queue.
+2. If `s2` is empty, transfer all elements from `s1` to `s2`  
+   while popping from `s1` and pushing onto `s2` until `s1` is empty.
+
+3. After the transfer, pop the top element from `s2` and return it as the result.
+
+
+- **Time Complexity:**
+  - In the worst case, when s2 is empty and we need to transfer elements from s1 to s2, the time complexity is O(N), where N is the number of elements in s1. This is because we are popping all elements from s1 and pushing them onto s2, which takes linear time in the number of elements in s1.
+  - If s2 is not empty (best-case scenario), the time complexity is O(1) because we are simply popping an element from s2
 
 
 - **Space Complexity:** O(1)
-    - The `dequeue` method uses a constant amount of additional memory regardless of the size of the queue.
-    - It does not create new data structures or allocate additional memory that scales with the number of elements in the queue.
-    - The space complexity is constant.
+    - The space complexity of the dequeue operation is O(1) 
+    - because we are not using any additional data structures or memory that grows with the input size.
+    - We are only performing operations on the existing stacks s1 and s2.
 
 ## Solution
 ``` java 
