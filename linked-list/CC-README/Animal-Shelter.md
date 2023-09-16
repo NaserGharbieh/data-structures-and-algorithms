@@ -1,14 +1,14 @@
 ## Code Challenge 12: AnimalShelter
 ### Create a class called AnimalShelter which holds only dogs and cats. the class works as Queue data structure.
 ## Whiteboard Process
-![CC10-stack](whiteboards/CC10-Queue-Implmentation.png)
+![CC10-stack](whiteboards/Animal-Shelter.png)
 
 ## Approach & Efficiency
 ## there are 2 main methods 
 ### 1. enqueue(animal) : method inserts a new element (animal) at the back (or rear) of its species queue.
 - **Algorithm :**
 1. Create a new node `newNode` with the given `animal`.
-2. Check for `species` property to insert the `animal` into his species Queue  
+2. Check for `species` property to insert the `animal` into its species Queue  
 3. If the queue is empty (both front and rear references are null), set
    both the front and rear references to the new node.
 4. If the queue is not empty, set the next reference of the current back
