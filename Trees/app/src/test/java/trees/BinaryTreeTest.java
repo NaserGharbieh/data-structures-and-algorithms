@@ -51,6 +51,12 @@ public class BinaryTreeTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void testFindMaximumValue(){
+      int result= binaryTree.findMaximumValue();
+      int expected =5;
+      assertEquals(expected,result);
+    }
 
 }
 
