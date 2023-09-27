@@ -55,12 +55,12 @@ public class BinaryTree<T> {
         List<Integer> maxlist=new ArrayList<>() ;
 
         this.inOrderTraversal((List<T>) maxlist);
-       int max=maxlist.get(0).intValue();
+       int maxNumber =maxlist.get(0).intValue();
         for (int number :maxlist){
-            if(number>max)
-                max=number;
+            if(number> maxNumber)
+                maxNumber =number;
         }
-    return max;
+    return maxNumber;
     }
 
 
