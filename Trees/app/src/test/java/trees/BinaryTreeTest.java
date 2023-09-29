@@ -58,5 +58,19 @@ public class BinaryTreeTest {
       assertEquals(expected,result);
     }
 
+    @Test
+    public void testBFS() {
+
+        // Perform BFS and get the result
+        List<Integer> result = BinaryTree.bfs(binaryTree);
+
+        // Define your expected result
+        List<Integer> expected = List.of(1, 2, 3, 4, 5);
+
+        assertEquals(expected, result);
+    }
 }
+
+
+
 

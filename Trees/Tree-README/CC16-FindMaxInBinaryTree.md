@@ -3,7 +3,7 @@
 
 
 ## Whiteboard Process
-![CC16-FindMaxInBinaryTree](TreeWhiteBoards/CC16-FindMaxInBinaryTree.png)
+![CC16-FindMaxInBinaryTree](TreeWhiteBoards/CC17-breadthFirstSearch.png)
 
 ## Approach & Efficiency
 
