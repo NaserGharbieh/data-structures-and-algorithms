@@ -90,5 +90,3 @@ Insertion Sort can be a good choice when:
 However, for larger datasets, more efficient sorting algorithms like Merge Sort, Quick Sort, or even built-in sorting functions provided by programming languages are often preferred.
 
 In conclusion, Insertion Sort is a basic and intuitive sorting algorithm that is easy to implement and understand. While it may not be the most efficient sorting method for all cases, it has its place in certain scenarios where simplicity and stability are more important than raw speed.
-
----
