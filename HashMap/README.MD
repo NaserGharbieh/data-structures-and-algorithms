@@ -13,7 +13,7 @@ The implementation of the hash table should include the following methods:
 - `hash(key)`: Computes the hash for a given key.
 
 ## Whiteboard Process
-![CC30-SetHashmapWhiteboard.png](/Hashmap-README/HashmapWhiteborads/CC30-HashmapWhiteboard.png)
+![CC30-SetHashmapWhiteboard.png](./Hashmap-README/HashmapWhiteborads/CC30-HashmapWhiteboard.png)
 
 **The time complexity of these methods should be O(1) on average**, assuming a good hash function and a relatively even distribution of keys. In the worst case, when there are many collisions, 
 
