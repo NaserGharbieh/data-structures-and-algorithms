@@ -20,7 +20,7 @@ public class WordCounter {
             }
         }
 
-        return null; // No repeated words found
+        return "No repeated words found";
     }
 
     public static void main(String[] args) {
