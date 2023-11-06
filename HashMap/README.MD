@@ -12,9 +12,12 @@ The implementation of the hash table should include the following methods:
 - `keys()`: Returns a list of all unique keys in the hash table.
 - `hash(key)`: Computes the hash for a given key.
 
+## Whiteboard Process
+![CC30-SetHashmapWhiteboard.png](/Hashmap-README/HashmapWhiteborads/CC30-HashmapWhiteboard.png)
+
 **The time complexity of these methods should be O(1) on average**, assuming a good hash function and a relatively even distribution of keys. In the worst case, when there are many collisions, 
 
-**the time complexity is O(n), where n is the number of keys.**
+**the space complexity is O(n), where n is the number of keys.**
 This challenge will test your ability to implement a fundamental data structure and ensure that it performs efficiently for key-value mapping.
 
 
