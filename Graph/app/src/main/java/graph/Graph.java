@@ -1,7 +1,6 @@
 package graph;
 
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<T>>  // just in case you have Comparable data structures
 {
@@ -54,6 +53,33 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
     public int compareTo(Graph<T> o) {
         throw new UnsupportedOperationException("Graph does not implement compareTo()");
     }
+    public LinkedList<Vertex<T>> breadthFirst(Vertex<T> start) {
+        if (!adjacencyLists.containsKey(start)) {
+            throw new IllegalArgumentException("Start vertex not found in the graph");
+        }
+
+        LinkedList<Vertex<T>> visitedNodes = new LinkedList<>();
+        Queue<Vertex<T>> queue = new LinkedList<>();
+        Set<Vertex<T>> visitedSet = new HashSet<>();
+
+        queue.add(start);
+        visitedSet.add(start);
+
+        while (!queue.isEmpty()) {
+            Vertex<T> currentVertex = queue.poll();
+            visitedNodes.add(currentVertex);
+
+            for (Edge<T> edge : adjacencyLists.get(currentVertex)) {
+                Vertex<T> neighbor = edge.destination;
+                if (!visitedSet.contains(neighbor)) {
+                    queue.add(neighbor);
+                    visitedSet.add(neighbor);
+                }
+            }
+        }
+        System.out.println("Breadth-First Traversal: " + visitedNodes);
+
+        return visitedNodes;}
 
     @Override
     public String toString() {
