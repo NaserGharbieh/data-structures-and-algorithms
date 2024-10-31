@@ -80,6 +80,32 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
         System.out.println("Breadth-First Traversal: " + visitedNodes);
 
         return visitedNodes;}
+    public LinkedList<Vertex<T>> depthFirst(Vertex<T> start) {
+        if (!adjacencyLists.containsKey(start)) {
+            throw new IllegalArgumentException("Start vertex not found in the graph");
+        }
+
+        LinkedList<Vertex<T>> visitedNodes = new LinkedList<>();
+        Stack<Vertex<T>> stack = new Stack<>();
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            Vertex<T> currentVertex = stack.pop();
+
+            if (!visitedNodes.contains(currentVertex)) {
+                visitedNodes.add(currentVertex);
+
+                for (Edge<T> edge : adjacencyLists.get(currentVertex)) {
+                    stack.push(edge.destination);
+                }
+            }
+        }
+
+        // Display the collection
+        System.out.println("Depth-First Traversal: " + visitedNodes);
+
+        return visitedNodes;
+    }
 
     @Override
     public String toString() {
